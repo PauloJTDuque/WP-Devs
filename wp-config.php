@@ -60,7 +60,7 @@ define( 'DB_COLLATE', '' );
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix = 'wp_';
-define( 'WP_DEBUG',true);
+// define( 'WP_DEBUG',true);
 
 /**
  * For developers: WordPress debugging mode.
@@ -74,7 +74,7 @@ define( 'WP_DEBUG',true);
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 
 /* Add any custom values between this line and the "stop editing" line. */
