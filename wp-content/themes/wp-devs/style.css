@@ -14,3 +14,8 @@ Text Domain: wp-devs
 Tags: one-colum, custom-logo, feautres-images, tranlation-ready
 
 */
+
+.top-bar{
+    background: rgb(171, 57, 70);
+    height: 70px;
+}
