@@ -5,9 +5,8 @@ hamburguer = document.querySelector('.menu-icon');
 
 buttonClick.addEventListener( 'click', () => {
     dropdown.classList.toogle('show-dropdown');
-    submenu.classList.toogle('show-dropdown');
-    // if (submenu) {
-    //     submenu.classList.toogle('show-dropdown');
-    // }
-    //hamburguer.classList.toogle('animate-button');
+    if (submenu) {
+        submenu.classList.toogle('show-dropdown');
+    }
+    hamburguer.classList.toogle('animate-button');
 })
