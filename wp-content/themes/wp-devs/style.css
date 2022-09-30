@@ -635,7 +635,7 @@ img {
     } 
     .show-dropdown{
         left: 0 !important;
-    }   
+    }  
     .animate-button .bar1 {
         -webkit-transform: rotate(-45deg) translate(-4px, 4px);
         transform: rotate(-45deg) translate(-4px, 4px);
@@ -645,7 +645,7 @@ img {
         -webkit-transform: rotate(45deg) translate(-7px, -7px);
         transform: rotate(45deg) translate(-7px, -7px);
     }
-} 
+}  
 
 /* Hero */
 .hero{
