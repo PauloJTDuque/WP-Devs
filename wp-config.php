@@ -88,5 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
 
+// define( 'WP_TEMP_DIR', dirname(__FILE__) . '/wp-content/temp/');
+
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
