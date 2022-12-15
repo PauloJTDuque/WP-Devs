@@ -1,3 +1,7 @@
+<?php
+    
+?>
+
 <table class="form-table duque-slider-metabox"> 
     <tr>
         <th>
