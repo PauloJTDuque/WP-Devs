@@ -5,7 +5,7 @@ if( !class_exists( 'Duque_Slider_Post_Type') ){
         function __construct(){
             add_action( 'init', array( $this, 'create_post_type' ) );
             add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
-            add_action( 'save_post', array( $this, 'save_post', ), 10, 2);
+            add_action( 'save_post', array( $this, 'save_post' ), 10, 2);
         }
 
         public function create_post_type(){
@@ -31,7 +31,7 @@ if( !class_exists( 'Duque_Slider_Post_Type') ){
                     'exclude_from_search'   => false,
                     'publicly_queryable'    => true,
                     'show_in_rest'  => true,
-                    'menu_icon' => 'dashicons-images-alt2'
+                    'menu_icon' => 'dashicons-images-alt2',
                     //'register_meta_box_cb'  =>  array( $this, 'add_meta_boxes' )
                 )
             );
@@ -42,7 +42,7 @@ if( !class_exists( 'Duque_Slider_Post_Type') ){
                 'Link Options',
                 array( $this, 'add_inner_meta_boxes' ),
                 'duque-slider',
-                'side',
+                'normal',
                 'high'
             );
         }
@@ -51,7 +51,7 @@ if( !class_exists( 'Duque_Slider_Post_Type') ){
             require_once(DUQUE_SLIDER_PATH . 'views/duque-slider_metabox.php' );
         }
         public function save_post( $post_id ){
-            if ( isset( $_post['action'] ) && $_post['action'] == 'editpost'){
+            if ( isset( $_POST['action'] ) && $_POST['action'] == 'editpost'){
                 $old_link_text = get_post_meta( $post_id, 'duque_slider_link_text', true);
                 $new_link_text = $_POST['duque_slider_link_text'];
                 $old_link_url = get_post_meta( $post_id, 'duque_slider_link_url', true);
