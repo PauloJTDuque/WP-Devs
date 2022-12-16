@@ -51,6 +51,28 @@ if( !class_exists( 'Duque_Slider_Post_Type') ){
             require_once(DUQUE_SLIDER_PATH . 'views/duque-slider_metabox.php' );
         }
         public function save_post( $post_id ){
+            if ( isset( $_POST['duque_slider_nonce' ] ) ){
+                if( ! wp_verify_nonce( $_POST['duque_slider_nonce'], 'duque_slider_nonce' ) ){
+                    return;                    
+                }
+            }
+            
+            // Verificando se AUTOSAVE está Ativo
+            if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE){
+                return;
+            }
+
+            //Verificando se estamos na tela CPT correto
+            if( isset( $_POST['post_type']) && $_POST['post_type'] === 'duque-slider' ){
+                //User pode editar página do CPT
+                if( ! current_user_can( 'edit_page', $post_id ) ){
+                    return;
+                //User pode editar POST     
+                }elseif( ! current_user_can( 'edit_post', $post_id ) ){
+                    return;
+                }
+            }
+
             if ( isset( $_POST['action'] ) && $_POST['action'] == 'editpost'){
                 $old_link_text = get_post_meta( $post_id, 'duque_slider_link_text', true);
                 $new_link_text = $_POST['duque_slider_link_text'];
