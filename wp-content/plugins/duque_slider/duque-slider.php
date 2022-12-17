@@ -18,12 +18,6 @@
 Duque Slider is free software
 */
 
-
-
-
-
-
-
 if( ! defined( 'ABSPATH') ){
     exit;
 }

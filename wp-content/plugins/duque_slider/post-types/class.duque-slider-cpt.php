@@ -6,6 +6,9 @@ if( !class_exists( 'Duque_Slider_Post_Type') ){
             add_action( 'init', array( $this, 'create_post_type' ) );
             add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
             add_action( 'save_post', array( $this, 'save_post' ), 10, 2);
+            add_filter( 'manage_duque-slider_posts_columns', array( $this, 'duque_slider_cpt_columns'));
+            add_action( 'manage_duque-slider_posts_custom_column', array( $this, 'duque_slider_custom_columns' ), 10, 2);
+            add_filter( 'manage_edit-duque-slider_sortable_columns', array( $this, 'duque_slider_sortable_columns'));
         }
 
         public function create_post_type(){
@@ -36,6 +39,29 @@ if( !class_exists( 'Duque_Slider_Post_Type') ){
                 )
             );
         }
+        public function duque_slider_cpt_columns( $columns ){
+            $columns['duque_slider_link_text'] = esc_html__( 'Link Text', 'duque-slider' );
+            $columns['duque_slider_link_url'] = esc_html__( 'Link URL', 'duque-slider' );
+            return $columns;
+        }
+
+        public function duque_slider_custom_columns( $column, $post_id ){
+            switch( $column ){
+                case 'duque_slider_link_text':
+                    echo esc_html( get_post_meta( $post_id, 'duque_slider_link_text', true) );
+                break;    
+
+                case 'duque_slider_link_url':
+                    echo esc_url( get_post_meta( $post_id, 'duque_slider_link_url', true) );
+                break;                   
+            }
+        }
+
+        public function duque_slider_sortable_columns( $columns ){
+            $columns['duque_slider_link_text'] = 'duque_slider_link_text';
+            return $columns;
+        }
+
         public function add_meta_boxes(){
             add_meta_box(
                 'duque_slider_meta_box',
