@@ -26,6 +26,9 @@ if( ! class_exists( 'Duque_Slider' ) ){
         function __construct(){
             $this->define_constants();
 
+            // Acrescentando ao menu admin
+            add_action ( 'admin_menu', array( $this, 'add_menu' ) );
+
             require_once( DUQUE_SLIDER_PATH  .  'post-types/class.duque-slider-cpt.php' );
             $Duque_Slider_Post_Type = new Duque_Slider_Post_Type();
         }
@@ -46,6 +49,21 @@ if( ! class_exists( 'Duque_Slider' ) ){
 
         public static function uninstall(){
 
+        }
+
+        public function add_menu(){
+            add_menu_page(  //add_plugins_page (dentro de plugins) ou add_theme_page (dentro de Aparência) ou add_options_page (dentro de configurações)
+                'Duque Slider Options',
+                'Duque Slider',
+                'manage_options',
+                'duque_slider_admin',
+                array( $this, 'duque_slider_settings_page' ),
+                'dashicons-images-alt2',
+            );
+        }
+
+        public function duque_slider_settings_page(){
+            echo "This is a teste page";
         }
     }
 }
