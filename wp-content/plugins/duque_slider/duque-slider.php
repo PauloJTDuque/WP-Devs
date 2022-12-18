@@ -31,6 +31,9 @@ if( ! class_exists( 'Duque_Slider' ) ){
 
             require_once( DUQUE_SLIDER_PATH  .  'post-types/class.duque-slider-cpt.php' );
             $Duque_Slider_Post_Type = new Duque_Slider_Post_Type();
+
+            require_once( DUQUE_SLIDER_PATH  .  'class.duque-slider-settings.php' );
+            $Duque_Slider_Settings = new Duque_Slider_Settings();
         }
         public function define_constants(){
             define( 'DUQUE_SLIDER_PATH', plugin_dir_path( __FILE__ ) );
@@ -83,7 +86,7 @@ if( ! class_exists( 'Duque_Slider' ) ){
         }
 
         public function duque_slider_settings_page(){
-            echo "This is a teste page";
+            require( MV_SLIDER_PATH . 'views/settings-page.php')
         }
     }
 }
