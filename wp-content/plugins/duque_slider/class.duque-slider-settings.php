@@ -11,6 +11,12 @@ if( ! class_exists( 'Duque_Slider_Settings')){
         }
 
         public function admin_ini(){
+
+            // Nada vai para o database se não houver registro
+            // Parâmetro Option group aceita os parâmetros: general,
+            // discussion, media, reading, writing, misc, options, privacy
+            // referentes a itens nativos do wordpress
+            register_setting( 'duque_slider_group', 'duque_slider_options');
             add_settings_section(
                 'duque_slider_main_section',
                 'How does it works?',
