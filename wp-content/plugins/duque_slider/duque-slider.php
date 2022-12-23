@@ -86,7 +86,7 @@ if( ! class_exists( 'Duque_Slider' ) ){
         }
 
         public function duque_slider_settings_page(){
-            require( MV_SLIDER_PATH . 'views/settings-page.php');
+            require( DUQUE_SLIDER_PATH . 'views/settings-page.php');
         }
     }
 }
