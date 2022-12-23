@@ -17,6 +17,7 @@ if( ! class_exists( 'Duque_Slider_Settings')){
             // discussion, media, reading, writing, misc, options, privacy
             // referentes a itens nativos do wordpress
             register_setting( 'duque_slider_group', 'duque_slider_options');
+
             add_settings_section(
                 'duque_slider_main_section',
                 'How does it works?',
@@ -58,6 +59,15 @@ if( ! class_exists( 'Duque_Slider_Settings')){
                 'duque_slider_second_section',
             );
 
+            add_settings_field(
+                'duque_slider_style',
+                'Slider Style',
+                array( $this, 'duque_slider_style_callback'),
+                //null,
+                'duque_slider_page2',
+                'duque_slider_second_section',
+            );
+
         }
         public function duque_slider_shortcode_callback(){
             ?>
@@ -91,6 +101,19 @@ if( ! class_exists( 'Duque_Slider_Settings')){
                     ?>
                 >
                 <label for="duque_slider_bullets"> Wheter to display bullets or not </label>
+            <?php
+        }
+
+        public function duque_slider_style_callback(){
+            ?>
+                <select
+                    id="duque_slider_style"
+                    name="duque_slider_options[duque_slider_style]">
+                    <option value="style-1" 
+                        <?php isset( self::$options['duque_slider_style'] ) ? selected( 'style-1', self::$options['duque_slider_style'], true ) : ''; ?>>Style-1</option>
+                    <option value="style-2" 
+                        <?php isset( self::$options['duque_slider_style'] ) ? selected( 'style-2', self::$options['duque_slider_style'], true ) : ''; ?>>Style-2</option>
+                </select>
             <?php
         }
 
