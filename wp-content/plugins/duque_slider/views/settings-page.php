@@ -8,6 +8,8 @@
         settings_fields ( 'duque_slider_group' );
         //primeira página dentro da guia
         do_settings_sections( 'duque_slider_page1' );
+        //segunda página dentro da guia
+        do_settings_sections( 'duque_slider_page2' );
         //apresentar botão que permite enviar dados para tabela
         submit_button( 'Save Settings');
     ?>    

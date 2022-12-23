@@ -49,6 +49,15 @@ if( ! class_exists( 'Duque_Slider_Settings')){
                 'duque_slider_second_section',
             );
 
+            add_settings_field(
+                'duque_slider_bullets',
+                'Display Bullets',
+                array( $this, 'duque_slider_bullets_callback'),
+                //null,
+                'duque_slider_page2',
+                'duque_slider_second_section',
+            );
+
         }
         public function duque_slider_shortcode_callback(){
             ?>
@@ -56,14 +65,34 @@ if( ! class_exists( 'Duque_Slider_Settings')){
             <?php
         }
 
-        public function mv_slider_title_callback(){
+        public function duque_slider_title_callback(){
             ?>
                 <input type="text"
-                 name="duque_slider_options[]"
-                 id=""
-                 value=""
-                 >   
+                    name="duque_slider_options[duque_slider_title]"
+                    id="duque_slider_title"
+                    value="<?php echo isset( self::$options['duque_slider_title'] ) ? esc_attr( self::$options['duque_slider_title'] ) : ' ' ; ?>" 
+                >
             <?php
         }
+
+        public function duque_slider_bullets_callback(){
+            ?>
+                <input 
+                    type="checkbox"
+                    name="duque_slider_options[duque_slider_bullets]"
+                    id="duque_slider_bullets"
+                    value="1" 
+                    <?php
+                        if( isset( self::$options['duque_slider_bullets'])){
+
+                            checked( "1", self::$options["duque_slider_bullets"], true);
+
+                        }
+                    ?>
+                >
+                <label for="duque_slider_bullets"> Wheter to display bullets or not </label>
+            <?php
+        }
+
     }
 }    
